@@ -4,6 +4,16 @@ import RPi.GPIO as GPIO
 
 
 class UltrasonicSensors:
+    """
+    Example code which prints distance for 10 seconds for one sensor:
+
+    u_sensor = UltrasonicSensor([23], [24])
+    start_time = time()
+    while time() - start_time < 10:
+        print u_sensor.distance(0)
+    u_sensor.reset()
+    """
+
     def __init__(self, trigger_pins, echo_pins):
         """
         Setting GPIO numbering; BCM sets it according to the Broadcom SOC Channel
@@ -36,6 +46,11 @@ class UltrasonicSensors:
         GPIO.cleanup()
 
     def distance(self, sensor_number):
+        """
+        Returns distance on given sensor number. Returns None when out of range.
+        :param sensor_number:
+        :return:
+        """
         trig = self.trigger_pins[sensor_number]
         echo = self.echo_pins[sensor_number]
 
