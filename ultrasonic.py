@@ -25,9 +25,12 @@ while time.time() - start_time < 10:
     time.sleep(0.00001)  # pulse for 10us to trigger the sensor
     GPIO.output(TRIG, False)
 
-    pulse_start = time.time()
     while GPIO.input(ECHO) == 0:
-        if time.time() - pulse_start > 300 / 17150:
+        pass
+    pulse_start = time.time()
+    while GPIO.input(ECHO) == 1:
+        # print GPIO.input(ECHO)
+        if time.time() - pulse_start > 0.03:
             pulse_end = None
             break
     else:
