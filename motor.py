@@ -46,3 +46,4 @@ def stop(motor1, motor2):
     GPIO.output(motor2.input1, False)
     GPIO.output(motor1.input2, False)
     GPIO.output(motor2.input2, False)
+
