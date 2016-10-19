@@ -32,6 +32,7 @@ def loop():
     print int(data[0]), int(data[1])
     print sensor_data
 
+
 while True:
 
     distance = [sensor.distance(i) for i in xrange(6)]
