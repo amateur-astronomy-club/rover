@@ -1,5 +1,6 @@
 from time import sleep
 
+import serial.tools.list_ports
 import serial
 
 import motor
@@ -20,7 +21,24 @@ back = 5
 clearance = 30
 
 sensor = UltrasonicSensors(trigger_pins, echo_pins)
-ser = serial.Serial('/dev/ttyACM0', 9600)
+
+ports = list(serial.tools.list_ports.comports())
+
+port_loc = None
+
+for p in ports:
+    if "2341" in p[2].lower():
+        port_loc = p[0]
+
+        print "Arduino Found!"
+        break
+
+if port_loc is None:
+    raise Exception("Arduino not found.")
+
+ser = serial.Serial(port_loc)
+
+print "Connected to Arduino"
 
 
 def loop():
