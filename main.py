@@ -24,10 +24,13 @@ ser = serial.Serial('/dev/ttyACM0', 9600)
 
 
 def loop():
-    read_serial = ser.readline()
-    data = read_serial.strip()[1:].split("and")
-    print int(data[0]), int(data[1])
+    read_serial = ser.readline().strip()
 
+    solar_panel_data, sensor_data = read_serial.split(';')
+
+    data = solar_panel_data[1:].split("and")
+    print int(data[0]), int(data[1])
+    print sensor_data
 
 while True:
 

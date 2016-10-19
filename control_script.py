@@ -19,12 +19,16 @@ while True:
     elif inp_p == "B":
         motor.back(m1, m2)
         sleep(2)
+        motor.stop(m1, m2)
     elif inp_p == "F":
         motor.front(m1, m2)
         sleep(2)
+        motor.stop(m1, m2)
     elif inp_p == "L":
         motor.turnLeft(m1, m2)
         sleep(2)
+        motor.stop(m1, m2)
     elif inp_p == "R":
         motor.turnRight(m1, m2)
         sleep(2)
+        motor.stop(m1, m2)
