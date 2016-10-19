@@ -1,7 +1,7 @@
 import serial
 import serial.tools.list_ports
 
-import motor
+import motor2 as motor
 from adapted import UltrasonicSensors
 
 trigger_pins = [23, 24, 25, 12, 16, 20]  # physical 16,18,22,32,36,38
@@ -59,6 +59,27 @@ while True:
 
     if distance[FL] == min_d:
         if distance[F] >= distance[B]:
-            pass
+            motor.turnRightForward(m1, m2)
+        else:
+            motor.back(m1, m2)
+    elif distance[FR] == min_d:
+        if distance[F] >= distance[B]:
+            motor.turnLeftForward(m1, m2)
+        else:
+            motor.back(m1, m2)
+    elif distance[BL] == min_d:
+        if distance[B] >= distance[F]:
+            motor.turnLeftBackward(m1, m2)
+        else:
+            motor.front(m1, m2)
+    elif distance[BR] == min_d:
+        if distance[B] >= distance[F]:
+            motor.turnRightBackward(m1, m2)
+        else:
+            motor.front(m1, m2)
+    elif distance[B] == min_d:
+        motor.front(m1, m2)
+    elif distance[F] == min_d:
+        motor.back(m1, m2)
 
     loop()
