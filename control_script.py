@@ -1,7 +1,7 @@
 import motor
 from time import sleep
 
-m1 = motor.Motor([18, 21, 13])  # physical 12,40,33
+m1 = motor.Motor([18, 21, 13])  # physical 12, 40, 33
 m2 = motor.Motor([8, 19, 26])
 
 print "Commands"
